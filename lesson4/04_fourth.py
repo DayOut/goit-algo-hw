@@ -7,6 +7,9 @@ def get_upcoming_birthdays(users: list, now: datetime) -> list:
         userBirthday = userBirthday.replace(year=now.year)
         delta = now - userBirthday
         if abs(delta.days) <= 7:
+            if userBirthday.weekday() >= 5:
+                correction = 7 - userBirthday.weekday()
+                userBirthday = userBirthday.replace(day=(userBirthday.day + correction))
             result.append({'name': user['name'], 'congratulation_date': userBirthday.strftime("%Y.%m.%d")})
     return result
 
@@ -22,7 +25,8 @@ users = [
     {"name": "Jane7 Smith", "birthday": "1990.08.27"},
     {"name": "Jane8 Smith", "birthday": "1990.09.27"},
     {"name": "Jan9 Smith", "birthday": "1990.10.27"},
-    {"name": "Jane10 Smith", "birthday": "1990.11.27"}
+    {"name": "Jane10 Smith", "birthday": "1990.11.27"},
+    {"name": "John Doe", "birthday": "1985.01.20"},
 ]
 
 today = datetime.strptime("2024.01.22", "%Y.%m.%d")
