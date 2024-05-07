@@ -10,7 +10,7 @@ ERROR_BACK_COLOR = Back.RED
 
 is_last_command = False
 contacts = {
-    "asd": 123123123,
+    "jack": 123123123,
     "andrew": 321321231,
 }
 
